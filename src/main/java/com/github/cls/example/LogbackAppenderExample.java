@@ -8,6 +8,6 @@ public class LogbackAppenderExample {
     private static final Logger LOGGER = LoggerFactory.getLogger(LogbackAppenderExample.class);
 
     public static void main(String[] args) {
-        LOGGER.debug("debug");
+        LOGGER.debug("I am lockback log");
     }
 }

@@ -43,6 +43,7 @@ public class ClsLog4jAppender extends AppenderSkeleton {
                         Cls.Log.newBuilder()
                                 .setTime(event.timeStamp)
                                 .addContents(Cls.Log.Content.newBuilder().setKey("exceptionTrace").setValue(String.valueOf(getThrowableStr(event))))
+                                .addContents(Cls.Log.Content.newBuilder().setKey("level").setValue(String.valueOf(event.getLevel())))
                                 .addContents(Cls.Log.Content.newBuilder().setKey("threadName").setValue(event.getThreadName()))
                                 .addContents(Cls.Log.Content.newBuilder().setKey("time").setValue(String.valueOf(event.timeStamp)))
                                 .addContents(Cls.Log.Content.newBuilder().setKey("message").setValue(String.valueOf(event.getMessage())))
