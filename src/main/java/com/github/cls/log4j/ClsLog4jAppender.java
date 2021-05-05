@@ -9,7 +9,7 @@ import org.apache.log4j.spi.ThrowableInformation;
 
 import java.io.IOException;
 
-public class ClsLogAppender extends AppenderSkeleton {
+public class ClsLog4jAppender extends AppenderSkeleton {
 
     private String secretId;
 
@@ -33,7 +33,7 @@ public class ClsLogAppender extends AppenderSkeleton {
 
     private final ClsClient client;
 
-    public ClsLogAppender() {
+    public ClsLog4jAppender() {
         this.client = new ClsClient();
     }
 

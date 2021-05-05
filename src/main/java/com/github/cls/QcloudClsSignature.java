@@ -1,6 +1,5 @@
 package com.github.cls;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -84,8 +83,14 @@ public class QcloudClsSignature {
         return strBuilder.toString();
     }
 
-    public static String buildSignature(String secretId, String secretKey, String method, String path,
-                                        Map<String, String> paramMap, Map<String, String> headerMap, long expireMillsecond)
+    public static String buildSignature(String secretId,
+                                        String secretKey,
+                                        String method,
+                                        String path,
+                                        Map<String, String> paramMap,
+                                        Map<String, String> headerMap,
+                                        long expireMillsecond)
+
             throws UnsupportedEncodingException {
 
         Map<String, String> signHeaders = buildSignHeaders(headerMap);
@@ -116,38 +121,14 @@ public class QcloudClsSignature {
         //System.out.println(stringToSign + "\n");
         String signature = HmacUtils.hmacSha1Hex(signKey, stringToSign);
 
-        String authoriationStr = new StringBuilder().append(Q_SIGN_ALGORITHM_KEY).append("=")
+        return new StringBuilder().append(Q_SIGN_ALGORITHM_KEY).append("=")
                 .append(Q_SIGN_ALGORITHM_VALUE).append("&").append(Q_AK).append("=")
                 .append(secretId).append("&").append(Q_SIGN_TIME).append("=")
                 .append(qSignTimeStr).append("&").append(Q_KEY_TIME).append("=").append(qKeyTimeStr)
                 .append("&").append(Q_HEADER_LIST).append("=").append(qHeaderListStr).append("&")
                 .append(Q_URL_PARAM_LIST).append("=").append(qUrlParamListStr).append("&")
                 .append(Q_SIGNATURE).append("=").append(signature).toString();
-        return authoriationStr;
     }
 
-    public static void main(String args[]) {
-        Map<String, String> paramMap = new HashMap();
-        Map<String, String> headerMap = new HashMap();
-        paramMap.put("logset_id", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-        headerMap.put("Host", "ap-shanghai.cls.myqcloud.com");
-        headerMap.put("User-Agent", "AuthSDK");
-        try {
-            System.out.println(QcloudClsSignature.buildSignature("AKIDc9YlmrBcFk4C8sbmXQ8i65XXXXXXXXXX", "LUSE4nPK1d4tX5SHyXv6tZXXXXXXXXXX",
-                    "GET", "/logset", paramMap, headerMap, 300000));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        paramMap.clear();
-        headerMap.put("Content-Type", "application/json");
-        headerMap.put("Content-MD5", "f9c7fc33c7eab68dfa8a52508d1f4659");
-        try {
-            System.out.println(QcloudClsSignature.buildSignature("AKIDc9YlmrBcFk4C8sbmXQ8i65XXXXXXXXXX", "LUSE4nPK1d4tX5SHyXv6tZXXXXXXXXXX",
-                    "PUT", "/logset", paramMap, headerMap, 300000));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-    }
 
 }
