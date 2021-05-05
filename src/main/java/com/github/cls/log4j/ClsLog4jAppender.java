@@ -37,6 +37,7 @@ public class ClsLog4jAppender extends AppenderSkeleton {
         this.client = new ClsClient();
     }
 
+    @Override
     protected void append(LoggingEvent event) {
         Cls.LogGroupList logGroupList = Cls.LogGroupList.newBuilder().addLogGroupList(
                 Cls.LogGroup.newBuilder().addLogs(

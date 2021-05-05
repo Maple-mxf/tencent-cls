@@ -11,9 +11,9 @@
         <project>smartdoc</project>
         <endpoint>ap-nanjing.cls.tencentcs.com</endpoint>
         <region>ap-nanjing</region>
-        <secretId>AKIDQa1B6dIsc8OSntCuVpujKgHi8HAomOIE</secretId>
-        <secretKey>vWqtiGadeXCbjcg39yZtwj2EJ7ewZv03</secretKey>
-        <topicId>b9ed1869-156a-4eb4-ae96-b0fa292cf5b5</topicId>
+        <secretId>Xxxxxxxxx</secretId>
+        <secretKey>Xxxxxxxxx</secretKey>
+        <topicId>Xxxxxxxxx</topicId>
         <source>smart-doc</source>
         <timeZone>UTC</timeZone>
         <timeFormat>yyyy-MM-dd'T'HH:mmZ</timeFormat>
